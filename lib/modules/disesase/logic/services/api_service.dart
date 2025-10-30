@@ -57,7 +57,6 @@ class ApiService {
   }
 
   // Mungkin perlu mengubah timeout untuk check server status
-  // filepath: d:\SKRIPSI\SOURCE\MOBILE\klasifikasi_penyakit_padi\lib\modules\disesase\logic\services\api_service.dart
   Future<bool> checkServerStatus() async {
     try {
       print('🔍 Checking server status...');
@@ -77,7 +76,7 @@ class ApiService {
     }
   }
 
-  // Get device information (perbaikan: handle error lebih baik)
+  // Get device information
   Future<Map<String, String>> _getDeviceInfo() async {
     if (_deviceInfo != null) return _deviceInfo!;
 
@@ -166,7 +165,7 @@ class ApiService {
     }
   }
 
-  // Generic HTTP request with error handling (perbaikan: tambah logging lebih detail)
+  // Generic HTTP request with error handling
   Future<http.Response?> _makeRequest(
     String method,
     String endpoint, {
@@ -248,7 +247,7 @@ class ApiService {
     }
   }
 
-  // Predict image with PostgreSQL integration (perbaikan: error handling lebih baik)
+  // Predict image with PostgreSQL integration
   Future<PredictionResult?> predictImage(File imageFile) async {
     try {
       print('📤 Starting image prediction...');
@@ -350,7 +349,7 @@ class ApiService {
     }
   }
 
-  // Chat with expert (perbaikan: tambah error handling dan logging)
+  // Chat with expert
   Future<ChatResponse?> chatWithExpert(
     String question,
     String diseaseContext, {
@@ -415,8 +414,7 @@ class ApiService {
     }
   }
 
-  // Update method getUserHistory dengan better error handling
-  // Update getUserHistory method - COMPLETELY SIMPLIFIED
+  // Get user history
   Future<HistoryResponse?> getUserHistory({
     int limit = 20,
     int offset = 0,

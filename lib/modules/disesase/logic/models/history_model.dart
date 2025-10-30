@@ -159,23 +159,22 @@ class PredictionHistoryItem {
       List<TopPrediction>? topPredictions;
       if (json['top_predictions'] != null && json['top_predictions'] is List) {
         try {
-          topPredictions =
-              (json['top_predictions'] as List)
-                  .asMap()
-                  .entries
-                  .map((entry) {
-                    var predData = entry.value;
-                    if (predData is Map<String, dynamic>) {
-                      if (!predData.containsKey('rank')) {
-                        predData['rank'] = entry.key + 1;
-                      }
-                      return TopPrediction.fromJson(predData);
-                    }
-                    return null;
-                  })
-                  .where((pred) => pred != null)
-                  .cast<TopPrediction>()
-                  .toList();
+          topPredictions = (json['top_predictions'] as List)
+              .asMap()
+              .entries
+              .map((entry) {
+                var predData = entry.value;
+                if (predData is Map<String, dynamic>) {
+                  if (!predData.containsKey('rank')) {
+                    predData['rank'] = entry.key + 1;
+                  }
+                  return TopPrediction.fromJson(predData);
+                }
+                return null;
+              })
+              .where((pred) => pred != null)
+              .cast<TopPrediction>()
+              .toList();
         } catch (e) {
           print('❌ Error parsing top_predictions: $e');
           topPredictions = null;
@@ -299,5 +298,3 @@ class HistoryPagination {
     return HistoryPagination(limit: 20, offset: 0, total: 0, hasMore: false);
   }
 }
-
-// REMOVE UserStats class COMPLETELY - not needed anymore!
